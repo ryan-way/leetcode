@@ -1,0 +1,23 @@
+{
+  "name": "leetcode",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.4.1",
+    "@types/figlet": "^1.5.8",
+    "bun-types": "latest",
+    "husky": "^8.0.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "figlet": "^1.7.0",
+    "pino": "^8.17.1",
+    "pino-pretty": "^10.3.0"
+  }
+}
