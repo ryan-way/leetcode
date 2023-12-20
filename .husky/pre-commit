@@ -2,4 +2,4 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 bun test
-bunx @biomejs/biome format --write ./src
+bunx @biomejs/biome check --apply src test

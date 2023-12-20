@@ -1,7 +1,7 @@
 import figlet from "figlet";
-import { config } from "./config";
-import { Client } from "./client";
 import { App } from "./app";
+import { Client } from "./client";
+import { config } from "./config";
 
 function printTitle() {
 	const message = figlet.textSync("Welcome to Leetcode!");

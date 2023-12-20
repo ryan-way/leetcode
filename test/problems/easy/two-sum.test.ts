@@ -1,5 +1,5 @@
-import { twoSum } from "../../../src/problems";
 import { describe, expect, test } from "bun:test";
+import { twoSum } from "../../../src/problems";
 import { logger } from "../../../src/utils";
 
 describe("Two Sum", () => {

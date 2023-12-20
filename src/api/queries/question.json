@@ -7,11 +7,7 @@
 		"enableRunCode": true,
 		"enableSubmit": true,
 		"enableTestMode": false,
-		"exampleTestcaseList": [
-			"[2,7,11,15]\n9",
-			"[3,2,4]\n6",
-			"[3,3]\n6"
-		],
+		"exampleTestcaseList": ["[2,7,11,15]\n9", "[3,2,4]\n6", "[3,3]\n6"],
 		"metaData": "{\n  \"name\": \"twoSum\",\n  \"params\": [\n    {\n      \"name\": \"nums\",\n      \"type\": \"integer[]\"\n    },\n    {\n      \"name\": \"target\",\n      \"type\": \"integer\"\n    }\n  ],\n  \"return\": {\n    \"type\": \"integer[]\",\n    \"size\": 2\n  },\n  \"manual\": false\n}"
 	}
 }
