@@ -1,5 +1,7 @@
 import figlet from "figlet";
-import { logger } from "./utils";
+import { config } from "./config";
+import { Client } from "./client";
+import { App } from "./app";
 
 function printTitle() {
 	const message = figlet.textSync("Welcome to Leetcode!");
@@ -9,16 +11,11 @@ function printTitle() {
 	console.log("#".repeat(length));
 }
 
-function testPino() {
-	logger.fatal("Something");
-	logger.info("info");
-	logger.warn("warn");
-	logger.error("error");
-}
-
-function main() {
+async function main() {
 	printTitle();
-	testPino();
+	const client = new Client();
+	const app = new App(config, client);
+	app.setup();
 }
 
 main();

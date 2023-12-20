@@ -1,0 +1,9 @@
+
+query questionContent($titleSlug: String!) {
+  question(titleSlug: $titleSlug) {
+    content
+    mysqlSchemas
+    dataSchemas
+  }
+}
+    
