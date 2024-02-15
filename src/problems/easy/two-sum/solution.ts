@@ -1,6 +1,3 @@
-import { isNullOrUndefined } from "util";
-import { logger } from "../../../utils";
-
 export function twoSum(nums: number[], target: number): number[] {
 	const map = new Map();
 
@@ -12,5 +9,5 @@ export function twoSum(nums: number[], target: number): number[] {
 		map.set(value, index);
 	}
 
-	return [];
+	throw new Error("Guarenteed one solution");
 }

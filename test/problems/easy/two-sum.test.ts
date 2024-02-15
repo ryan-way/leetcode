@@ -20,4 +20,8 @@ describe("Two Sum", () => {
 	test("[3,3], 6", () => {
 		expect(twoSum([3, 3], 6)).toEqual([0, 1]);
 	});
+
+	test("[], any", () => {
+		expect(() => twoSum([], 6)).toThrow();
+	});
 });
