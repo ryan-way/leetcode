@@ -1,5 +1,4 @@
 #!/usr/bin/env zsh
-. "$(dirname -- "$0")/_/husky.sh"
 
 bun test
 bunx @biomejs/biome check --apply src test
