@@ -4,6 +4,8 @@
   "type": "module",
   "scripts": {
     "start": "bun run src/index.ts",
+    "lint": "bunx @biomejs/biome check src test",
+    "format": "bunx @biomejs/biome check --apply src test",
     "bench": "bun benchmarks/index.ts",
     "prepare": "husky install"
   },

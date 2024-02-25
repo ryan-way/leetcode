@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 
 bun test
-bunx @biomejs/biome check --apply src test
+bun lint
