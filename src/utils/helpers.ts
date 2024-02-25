@@ -21,3 +21,7 @@ export function listNodeToArray(input: ListNode | null): number[] {
 	}
 	return res;
 }
+
+export function repeatArray<T>(array: T[], n: number) {
+	return Array(n).fill(array).flat();
+}
