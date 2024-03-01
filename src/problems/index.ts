@@ -8,3 +8,4 @@ export * from "./easy/merge-two-sorted-lists/solution";
 export * from "./medium/longest-palindromic-substring/solution";
 export * from "./medium/validate-binary-search-tree/solution";
 export * from "./medium/binary-tree-level-order-traversal/solution";
+export * from "./medium/add-two-numbers/solution";
