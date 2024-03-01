@@ -9,3 +9,4 @@ export * from "./medium/longest-palindromic-substring/solution";
 export * from "./medium/validate-binary-search-tree/solution";
 export * from "./medium/binary-tree-level-order-traversal/solution";
 export * from "./medium/add-two-numbers/solution";
+export * from "./medium/integer-to-roman/solution";
