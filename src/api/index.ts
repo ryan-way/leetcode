@@ -16,7 +16,7 @@ export interface GraphqlQuestion {
   metaData: string;
 }
 
-export type Type = "integer" | "string" | "string[]" | "integer[]";
+export type Type = "boolean" | "integer" | "string" | "string[]" | "integer[]";
 
 export interface Return {
   type: Type;

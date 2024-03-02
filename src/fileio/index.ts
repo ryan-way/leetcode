@@ -117,8 +117,13 @@ export class FileSystemCreater {
     if (type.includes("[]")) {
       return "[]";
     }
+
     if (type === "string") {
       return "";
+    }
+
+    if (type === "boolean") {
+      return "false";
     }
 
     return "0";
