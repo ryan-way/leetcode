@@ -16,7 +16,13 @@ export interface GraphqlQuestion {
   metaData: string;
 }
 
-export type Type = "boolean" | "integer" | "string" | "string[]" | "integer[]";
+export type Type =
+  | "boolean"
+  | "integer"
+  | "string"
+  | "string[]"
+  | "integer[]"
+  | "list<list<integer>>";
 
 export interface Return {
   type: Type;

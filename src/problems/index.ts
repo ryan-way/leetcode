@@ -12,3 +12,4 @@ export * from "./medium/add-two-numbers/solution";
 export * from "./medium/integer-to-roman/solution";
 export * from "./medium/container-with-most-water/solution";
 export * from "./medium/jump-game/solution";
+export * from "./medium/3sum/solution";

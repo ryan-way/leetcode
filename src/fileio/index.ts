@@ -114,6 +114,10 @@ export class FileSystemCreater {
   }
 
   default(type: Type): string {
+    if (type === "list<list<integer>>") {
+      return "[]";
+    }
+
     if (type.includes("[]")) {
       return "[]";
     }
