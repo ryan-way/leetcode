@@ -1,5 +1,10 @@
 import { describe, expect, test } from "bun:test";
-import { intToRoman } from "../../../src/problems";
+import {
+  intToRoman,
+  intToRomanList,
+  intToRomanString,
+  intToRomanTest,
+} from "../../../src/problems";
 
 const cases = [
   { input: 3, expected: "III" },
@@ -14,5 +19,23 @@ const cases = [
 describe("intToRoman", () => {
   test.each(cases)("on %p should be %s", ({ input, expected }) => {
     expect(intToRoman(input)).toEqual(expected);
+  });
+});
+
+describe("intToRoman", () => {
+  test.each(cases)("on %p should be %s", ({ input, expected }) => {
+    expect(intToRomanString(input)).toEqual(expected);
+  });
+});
+
+describe("intToRoman", () => {
+  test.each(cases)("on %p should be %s", ({ input, expected }) => {
+    expect(intToRomanList(input)).toEqual(expected);
+  });
+});
+
+describe("intToRoman", () => {
+  test.each(cases)("on %p should be %s", ({ input, expected }) => {
+    expect(intToRomanTest(input)).toEqual(expected);
   });
 });

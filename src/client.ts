@@ -14,13 +14,17 @@ export class Client {
     logger.info("Fetching Question...");
     const response = await this.client.query(data, { titleSlug: title });
 
-    if (response.data?.question) {
-      logger.info("Done!");
-      return response.data.question;
+    if (!response.data?.question) {
+      const message = `Did not receive response for question: ${title}`;
+      logger.fatal(response.error, message);
+      throw new Error(message);
     }
 
-    const message = `Did not receive response for question: ${title}`;
-    logger.fatal(response.error, message);
-    throw new Error(message);
+    const question = response.data?.question;
+
+    return {
+      ...question,
+      metaData: JSON.parse(question.metaData),
+    };
   }
 }

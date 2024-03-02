@@ -6,6 +6,33 @@ export interface CodeSnippet {
   code: string;
 }
 
+export interface GraphqlQuestion {
+  content: string;
+  codeSnippets: CodeSnippet[];
+  difficulty: string;
+  titleSlug: string;
+  title: string;
+  exampleTestcaseList: string[];
+  metaData: string;
+}
+
+export type Type = "integer" | "string" | "string[]" | "integer[]";
+
+export interface Return {
+  type: Type;
+}
+
+export interface Param {
+  name: string;
+  type: Type;
+}
+
+export interface MetaData {
+  name: string;
+  params: Param[];
+  return: Return;
+}
+
 export interface Question {
   content: string;
   codeSnippets: CodeSnippet[];
@@ -13,6 +40,7 @@ export interface Question {
   titleSlug: string;
   title: string;
   exampleTestcaseList: string[];
+  metaData: MetaData;
 }
 
 export interface QuestionVariables {
@@ -20,7 +48,7 @@ export interface QuestionVariables {
 }
 
 export const data: TypedDocumentNode<
-  { question: Question },
+  { question: GraphqlQuestion },
   QuestionVariables
 > = gql`
 query RyanWay($titleSlug: String!) {
@@ -35,6 +63,7 @@ query RyanWay($titleSlug: String!) {
         exampleTestcaseList
         titleSlug
         title
+        metaData
     }
 }
 `;

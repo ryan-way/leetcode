@@ -58,20 +58,6 @@ export function intToRomanList(num: number): string {
   return result.join("");
 }
 
-export function convert(
-  result: string[],
-  convert: number,
-  value: number,
-  label: string,
-): number {
-  let temp = convert;
-  while (temp >= value) {
-    temp -= value;
-    result.push(label);
-  }
-  return temp;
-}
-
 export function intToRomanTest(num: number): string {
   const result = [""];
   let temp = num;

@@ -1,22 +1,25 @@
 import { join } from "path";
 import { mkdir } from "fs/promises";
-import { writeFile } from "fs/promises";
+import { appendFile, writeFile } from "fs/promises";
 import { NodeHtmlMarkdown } from "node-html-markdown";
-import { Question } from "../api";
+import { Param, Question, Type } from "../api";
 import { logger } from "../utils";
 
 const BEGIN = `
 import { describe, expect, test } from "bun:test";
+import { $FUNCTION } from "../../../src/problems";
 
-describe("$TITLE", () => {
-`;
+const cases = [`;
 const TEST = `
-	test("$TESTCASE", () => {
-		expect($TESTCASE).toBe($EXPECTED);
-	});
-`;
+	{ input: { $INPUT }, expected: $EXPECTED },`;
 
 const END = `
+];
+
+describe("$FUNCTION", () => {
+  test.each(cases)("on %s should be %b", ({ input, expected }) => {
+    expect($FUNCTION($INPUTS)).toEqual(expected);
+  });
 });
 `;
 const FilePaths: Record<string, string> = {
@@ -35,7 +38,16 @@ export class FileSystemCreater {
     logger.info("Creating file system..");
     await this.setupProblem();
     await this.setupTest();
+    await this.appendIndex();
     logger.info("Done!");
+  }
+  async appendIndex() {
+    const ex = `export * from "./${this.question.difficulty.toLocaleLowerCase()}/${
+      this.question.titleSlug
+    }/solution";\n`;
+    const path = join(this.problemRoot, "index.ts");
+
+    await appendFile(path, ex);
   }
 
   async setupProblem() {
@@ -55,7 +67,10 @@ export class FileSystemCreater {
       logger.fatal(this.question.codeSnippets, message);
       throw new Error(message);
     }
-    await writeFile(join(path, FilePaths.Solution), typescript.code);
+    await writeFile(
+      join(path, FilePaths.Solution),
+      `export ${typescript.code}`,
+    );
   }
 
   async setupTest() {
@@ -70,17 +85,42 @@ export class FileSystemCreater {
 
   getTestFileContents(): string {
     return (
-      BEGIN.replace("$TITLE", this.question.title) +
+      BEGIN.replaceAll("$FUNCTION", this.question.metaData.name) +
       this.question.exampleTestcaseList
         .map((testCase) => {
-          const [test, expected] = testCase.split("\n", 2);
-          return TEST.replaceAll("$TESTCASE", test).replaceAll(
+          const inputs = testCase
+            .split("\n")
+            .map((input, idx) => {
+              const param = this.question.metaData.params[idx];
+              return this.serialize(param, input);
+            })
+            .join(", ");
+          return TEST.replaceAll("$INPUT", inputs).replaceAll(
             "$EXPECTED",
-            expected,
+            this.default(this.question.metaData.return.type),
           );
         })
         .join("") +
-      END
+      END.replaceAll("$FUNCTION", this.question.metaData.name).replaceAll(
+        "$INPUTS",
+        this.question.metaData.params
+          .map((param) => `input.${param.name}`)
+          .join(", "),
+      )
     );
+  }
+  serialize(param: Param, input: string): string {
+    return `${param.name}: ${input}`;
+  }
+
+  default(type: Type): string {
+    if (type.includes("[]")) {
+      return "[]";
+    }
+    if (type === "string") {
+      return "";
+    }
+
+    return "0";
   }
 }
