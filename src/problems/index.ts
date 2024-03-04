@@ -13,3 +13,7 @@ export * from "./medium/integer-to-roman/solution";
 export * from "./medium/container-with-most-water/solution";
 export * from "./medium/jump-game/solution";
 export * from "./medium/3sum/solution";
+export * from "./medium/letter-combinations-of-a-phone-number/solution";
+export * from "./medium/letter-combinations-of-a-phone-number/solution";
+export * from "./medium/letter-combinations-of-a-phone-number/solution";
+export * from "./medium/letter-combinations-of-a-phone-number/solution";

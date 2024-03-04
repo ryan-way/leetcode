@@ -114,7 +114,7 @@ export class FileSystemCreater {
   }
 
   default(type: Type): string {
-    if (type === "list<list<integer>>") {
+    if (type.includes("list")) {
       return "[]";
     }
 
@@ -130,6 +130,10 @@ export class FileSystemCreater {
       return "false";
     }
 
-    return "0";
+    if (type === "integer") {
+      return "0";
+    }
+
+    throw new Error(`No default value defined for type: ${type}`);
   }
 }
