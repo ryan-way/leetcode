@@ -17,3 +17,4 @@ export * from "./medium/letter-combinations-of-a-phone-number/solution";
 export * from "./medium/letter-combinations-of-a-phone-number/solution";
 export * from "./medium/letter-combinations-of-a-phone-number/solution";
 export * from "./medium/letter-combinations-of-a-phone-number/solution";
+export * from "./medium/generate-parentheses/solution";
