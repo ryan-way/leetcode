@@ -134,6 +134,10 @@ export class FileSystemCreater {
       return "0";
     }
 
+    if (type === "ListNode") {
+      return "null";
+    }
+
     throw new Error(`No default value defined for type: ${type}`);
   }
 }

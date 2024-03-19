@@ -18,3 +18,4 @@ export * from "./medium/letter-combinations-of-a-phone-number/solution";
 export * from "./medium/letter-combinations-of-a-phone-number/solution";
 export * from "./medium/letter-combinations-of-a-phone-number/solution";
 export * from "./medium/generate-parentheses/solution";
+export * from "./medium/swap-nodes-in-pairs/solution";
