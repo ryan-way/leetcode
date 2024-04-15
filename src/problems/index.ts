@@ -21,3 +21,4 @@ export * from "./medium/generate-parentheses/solution";
 export * from "./medium/swap-nodes-in-pairs/solution";
 export * from "./medium/valid-sudoku/solution";
 export * from "./medium/count-and-say/solution";
+export * from "./medium/combination-sum/solution";
